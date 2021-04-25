@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -7,6 +8,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   table: {
@@ -35,15 +38,20 @@ export default function ContactsTable({ data }) {
           {data.map((item) => (
             <TableRow key={item.login.uuid}>
               <TableCell>
-                <img
-                  src={item.picture.thumbnail}
+                <Avatar
                   alt={`${item.name.title}. ${item.name.first} ${item.name.last}`}
+                  src={item.picture.thumbnail}
                 />
               </TableCell>
               <TableCell>{`${item.name.title}. ${item.name.first} ${item.name.last}`}</TableCell>
               <TableCell>
-                <p>{item.dob.date}</p>
-                <p>{`${item.dob.age} years`}</p>
+                <Typography>
+                  {format(
+                    new Date(item.dob.date),
+                    "EEEE, MM/dd/yyyy, h:mm:ss aa"
+                  )}
+                </Typography>
+                <Typography>{`${item.dob.age} years`}</Typography>
               </TableCell>
               <TableCell>{item.email}</TableCell>
               <TableCell>{item.phone}</TableCell>
