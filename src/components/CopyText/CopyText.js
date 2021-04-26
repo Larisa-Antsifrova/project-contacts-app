@@ -1,12 +1,16 @@
+// React imports
 import React, { useState, useCallback } from "react";
-import PropTypes from "prop-types";
+// Components imports
+import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 import FileCopyOutlinedIcon from "@material-ui/icons/FileCopyOutlined";
-import Tooltip from "@material-ui/core/Tooltip";
+// Helpers imports
+import PropTypes from "prop-types";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { useCopyToClipboard } from "react-use";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
+// Styles configuration
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -21,6 +25,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
+// Declaring constants to manage Tooltip text
 const COPY_STATUS = {
   COPY: "copy",
   COPIED: "copied",
@@ -33,6 +38,7 @@ const TITLE_BY_COPY_STATUS = {
 
 export default function CopyText({ text }) {
   const classes = useStyles();
+
   const [, copyToClipboard] = useCopyToClipboard();
   const [statusCopy, setStatusCopy] = useState(COPY_STATUS.COPY);
 
