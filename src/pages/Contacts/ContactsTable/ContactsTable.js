@@ -10,6 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
+import CopyText from "../../../components/CopyText";
 
 const useStyles = makeStyles({
   table: {
@@ -53,11 +54,23 @@ export default function ContactsTable({ data }) {
                 </Typography>
                 <Typography>{`${item.dob.age} years`}</Typography>
               </TableCell>
-              <TableCell>{item.email}</TableCell>
-              <TableCell>{item.phone}</TableCell>
-              <TableCell>{`/${item.location.country}/
+              <TableCell>
+                {" "}
+                <CopyText text={item.email} />{" "}
+              </TableCell>
+              <TableCell>
+                {" "}
+                <CopyText text={item.phone} />
+              </TableCell>
+              <TableCell>
+                {" "}
+                <CopyText
+                  text={`/${item.location.country}/
               ${item.location.street.number} ${item.location.street.name}, ${item.location.city},
-              ${item.location.state}, ${item.location.postcode}`}</TableCell>
+              ${item.location.state}, ${item.location.postcode}`}
+                />{" "}
+              </TableCell>
+
               <TableCell align="right">{item.location.country}</TableCell>
             </TableRow>
           ))}
