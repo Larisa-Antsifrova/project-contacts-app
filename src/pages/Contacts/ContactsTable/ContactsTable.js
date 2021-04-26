@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import CopyText from "../../../components/CopyText";
+import { NATIONALITIES_HUMAN_NAME } from "../../../constants/nationality";
 
 const useStyles = makeStyles({
   table: {
@@ -55,23 +56,26 @@ export default function ContactsTable({ data }) {
                 <Typography>{`${item.dob.age} years`}</Typography>
               </TableCell>
               <TableCell>
-                {" "}
-                <CopyText text={item.email} />{" "}
+                <CopyText>
+                  <Typography>{item.email}</Typography>
+                </CopyText>
               </TableCell>
               <TableCell>
-                {" "}
-                <CopyText text={item.phone} />
+                <CopyText>
+                  <Typography>{item.phone}</Typography>
+                </CopyText>
               </TableCell>
               <TableCell>
-                {" "}
-                <CopyText
-                  text={`/${item.location.country}/
-              ${item.location.street.number} ${item.location.street.name}, ${item.location.city},
-              ${item.location.state}, ${item.location.postcode}`}
-                />{" "}
+                {/* <CopyText> */}
+                <Typography>{item.location.country}</Typography>
+                <Typography>{`${item.location.street.number} ${item.location.street.name}, ${item.location.city},`}</Typography>
+                <Typography>{`${item.location.state}, ${item.location.postcode}`}</Typography>
+                {/* </CopyText> */}
               </TableCell>
 
-              <TableCell align="right">{item.location.country}</TableCell>
+              <TableCell align="right">
+                {NATIONALITIES_HUMAN_NAME[item.nat]}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
