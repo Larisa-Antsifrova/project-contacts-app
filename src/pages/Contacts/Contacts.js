@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+// React imports
+import React from "react";
+// Custom hooks imports
 import { useContacts } from "./useContacts";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { useDataViewMode } from "./useDataViewMode";
+// Components imports
 import Container from "@material-ui/core/Container";
-// import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import ContactsTable from "./ContactsTable";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
-
+import Typography from "@material-ui/core/Typography";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import ContactsTable from "./ContactsTable";
 import ViewModeToggleButtons from "./ViewModeToggleButtons";
+// Helpers imports
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+// Constants imports
 import { DATA_VIEW_MODE } from "./viewModesConstants";
 
 const useStyles = makeStyles((theme) =>
@@ -20,23 +24,12 @@ const useStyles = makeStyles((theme) =>
     headerContainer: {
       marginBottom: theme.spacing(3),
     },
-    toggleButtonGroup: {
-      maxHeight: "40px",
-    },
   })
 );
 
 export default function Contacts() {
-  const savedDataViewMode =
-    localStorage.getItem("dataViewMode") || DATA_VIEW_MODE.TABLE;
-  const [dataViewMode, setDataViewMode] = useState(savedDataViewMode);
-
+  const [dataViewMode, setDataViewMode] = useDataViewMode();
   const contacts = useContacts();
-
-  useEffect(() => {
-    localStorage.setItem("dataViewMode", dataViewMode);
-  }, [dataViewMode]);
-
   const classes = useStyles();
 
   return (
