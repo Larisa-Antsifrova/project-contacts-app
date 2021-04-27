@@ -53,12 +53,12 @@ export default function Contacts() {
         <Grid item xs={12}>
           {(() => {
             if (contacts.isLoading) {
-              return <CircularProgress />;
+              return <CircularProgress data-testid="contacts-loader" />;
             }
 
             if (contacts.isError) {
               return (
-                <div>
+                <div data-testid="contacts-error">
                   <p>...Error...</p>
                 </div>
               );
