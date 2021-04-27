@@ -1,6 +1,7 @@
+// Helpers imports
 import { setupServer } from "msw/node";
 import { rest } from "msw";
-
+// Fixture data imports
 import { users } from "./__fixtures__/users";
 
 const handlers = [
