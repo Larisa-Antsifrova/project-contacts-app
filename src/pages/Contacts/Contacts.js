@@ -68,7 +68,7 @@ export default function Contacts() {
             }
             if (dataViewMode === DATA_VIEW_MODE.GRID) {
               return (
-                <div>
+                <div data-testid="contacts-grid-container">
                   <p>...Grid...</p>
                 </div>
               );

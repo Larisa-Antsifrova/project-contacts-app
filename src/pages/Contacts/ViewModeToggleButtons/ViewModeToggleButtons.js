@@ -39,12 +39,14 @@ export default function ViewModeToggleButtons({
       <ToggleButton
         value={DATA_VIEW_MODE.TABLE}
         aria-label={DATA_VIEW_MODE.TABLE}
+        data-testid="toggle-data-view-mode-table"
       >
         <ViewListIcon />
       </ToggleButton>
       <ToggleButton
         value={DATA_VIEW_MODE.GRID}
         aria-label={DATA_VIEW_MODE.GRID}
+        data-testid="toggle-data-view-mode-grid"
       >
         <ViewModuleIcon />
       </ToggleButton>
