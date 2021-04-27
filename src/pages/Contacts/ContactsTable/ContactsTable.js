@@ -56,14 +56,10 @@ export default function ContactsTable({ data }) {
                 <Typography>{`${item.dob.age} years`}</Typography>
               </TableCell>
               <TableCell>
-                <CopyText>
-                  <Typography>{item.email}</Typography>
-                </CopyText>
+                <CopyText text={item.email} />
               </TableCell>
               <TableCell>
-                <CopyText>
-                  <Typography>{item.phone}</Typography>
-                </CopyText>
+                <CopyText text={item.phone} />
               </TableCell>
               <TableCell>
                 {/* <CopyText> */}

@@ -36,17 +36,16 @@ const TITLE_BY_COPY_STATUS = {
   [COPY_STATUS.COPIED]: "Copied",
 };
 
-export default function CopyText({ children }) {
-  console.log(children.props.children);
+export default function CopyText({ text }) {
   const classes = useStyles();
 
   const [, copyToClipboard] = useCopyToClipboard();
   const [statusCopy, setStatusCopy] = useState(COPY_STATUS.COPY);
 
   const onClickCopy = useCallback(() => {
-    copyToClipboard(children.props.children);
+    copyToClipboard(text);
     setStatusCopy(COPY_STATUS.COPIED);
-  }, [copyToClipboard, children.props.children]);
+  }, [copyToClipboard, text]);
 
   const onClickAwayCopy = useCallback(() => {
     setStatusCopy(COPY_STATUS.COPY);
@@ -57,7 +56,7 @@ export default function CopyText({ children }) {
       <Tooltip title={TITLE_BY_COPY_STATUS[statusCopy]} placement="top" arrow>
         <Button className={classes.root} onClick={onClickCopy}>
           <FileCopyOutlinedIcon className={classes.icon} fontSize="small" />
-          {children}
+          {text}
         </Button>
       </Tooltip>
     </ClickAwayListener>
@@ -65,5 +64,5 @@ export default function CopyText({ children }) {
 }
 
 CopyText.propTypes = {
-  children: PropTypes.node.isRequired,
+  text: PropTypes.string.isRequired,
 };
